@@ -1,0 +1,36 @@
+form {
+    padding: 30px;
+}
+
+body {
+
+    padding: 15px;
+}
+
+h3 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+}
+
+.form-control {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    color: black;
+    padding: 15px;
+    border-color: black;
+}
+
+#postExample1 {
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    background-color: white;
+    border: 3px solid;
+    border-color: black;
+    margin-top: 15px;
+}
+
+#postExample1:hover {
+    color: white;
+    background-color: black;
+}
