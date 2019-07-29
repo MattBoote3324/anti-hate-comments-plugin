@@ -12,7 +12,7 @@ function checkSentient() {
         "https://mattboote3324.pythonanywhere.com/sentiment?data=" +
           encodeURI(text)
       );
-      const json = await response.text();
+      const json = await response.json();
       console.log(json);
       if (!handleFormEvent(json, input)) {
         //Stopping all events from happening.
