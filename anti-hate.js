@@ -23,6 +23,7 @@ function checkSentient() {
         if (e.preventDefault) e.preventDefault();
 
         input.focus();
+        input.setAttribute("style", "border-color: red;");
         console.log(
           "Sentiment Score too low on input " +
             input.id +
