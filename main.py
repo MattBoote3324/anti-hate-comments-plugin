@@ -47,10 +47,10 @@ def hello():
 
 
 #-------------------------------------------REQUEST FOR JAVASCRIPT----------------------------------#
-@app.route('/anti-hate', methods=['GET'])
-def send_script():
-    return send_from_directory(
-        '/home/mattboote3324/anti-hate/', 'anti-hate.js')
+# @app.route('/anti-hate', methods=['GET'])
+# def send_script():
+#    return send_from_directory(
+#        '/home/mattboote3324/anti-hate/', 'anti-hate.js')
 
 #-----------------------------------------ERROR HANDLING---------------------------------------------#
 @app.errorhandler(500)
