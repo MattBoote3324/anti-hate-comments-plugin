@@ -16,11 +16,11 @@ function checkSentient() {
 
       if (!handleFormEvent(json, input)) {
         //Stopping all events from happening.
-        event.cancel = true;
-        event.returnValue = false;
-        event.cancelBubble = true;
-        if (event.stopPropagation) event.stopPropagation();
-        if (event.preventDefault) event.preventDefault();
+        e.cancel = true;
+        e.returnValue = false;
+        e.cancelBubble = true;
+        if (e.stopPropagation) e.stopPropagation();
+        if (e.preventDefault) e.preventDefault();
 
         input.focus();
         console.log(
