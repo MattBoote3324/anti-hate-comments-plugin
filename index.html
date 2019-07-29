@@ -31,7 +31,7 @@ and also a form.-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <script src="anti-hate.js"></script>
+    <script src="https://mattboote3324.pythonanywhere.com/anti-hate"></script>
 
     </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700&display=swap" rel="stylesheet">
@@ -47,9 +47,10 @@ and also a form.-->
 
         <form>
             <div class="form-group">
-                <input id="example1" class="form-control anti-hate-check"
-                    placeholder="Please enter a kind or mean comment"></input>
-                <button id="postExample1" class="btn" type="button">Post Comment</button>
+                <input id="example1" class="form-control" placeholder="Please enter a kind or mean comment"></input>
+                <button id="postExample1" data-input="example1" class="btn" onclick="checkSentient(this)"
+                    type="button">Post
+                    Comment</button>
 
             </div>
         </form>

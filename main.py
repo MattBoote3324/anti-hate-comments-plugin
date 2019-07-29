@@ -1,22 +1,11 @@
-# Copyright 2015 Google Inc. All Rights Reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+
 
 # [START gae_flex_quickstart]
 import logging
 
-from flask import Flask
+from flask import Flask, send_from_directory, make_response
 from flask import request
+from flask import Response
 import json
 from google.cloud import language
 from google.cloud.language import enums
@@ -24,37 +13,46 @@ from google.cloud.language import types
 import os
 from google.oauth2 import service_account
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/mattboote3324/anti-hate/sentiment-analyis-be936a883ba2.json"
 
 app = Flask(__name__)
 
 
 @app.route('/sentiment', methods=['POST'])
 def hello():
-    
-    credentials  = service_account.Credentials.from_service_account_file('anti-hate-8d0d1ca0a7f1.json')
-    # [END language_python_migration_imports]
+    """Return a friendly HTTP greeting."""
+    resp = make_response(sentiment_checker(request))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
+
+def sentiment_checker(request):
     # Instantiates a client
-    # [START language_python_migration_client]
-    client = language.LanguageServiceClient(credentials = credentials)
-    # [END language_python_migration_client]
+    client = language.LanguageServiceClient()
 
-    # The text to analyze
+    # This is our request data coming in
     data = json.loads(request.data)
     text = data['text']
+
     document = types.Document(
         content=text,
         type=enums.Document.Type.PLAIN_TEXT)
-    logging.log(1,"here")
-    
+
     # Detects the sentiment of the text
     sentiment = client.analyze_sentiment(document=document).document_sentiment
 
-    
-    result = '"score": "{}", "magnitude": "{}"'.format(sentiment.score, sentiment.magnitude)
+    result = '"score": "{}", "magnitude": "{}"'.format(
+        sentiment.score, sentiment.magnitude)
     jsonResp = '{' + result + '}'
-    """Return a friendly HTTP greeting."""
     return jsonResp
+
+
+@app.route('/anti-hate', methods=['GET'])
+def send_script():
+    resp = make_response(send_from_directory(
+        '/home/mattboote3324/anti-hate/', 'anti-hate.js'))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @app.errorhandler(500)
