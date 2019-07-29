@@ -1,6 +1,5 @@
 function checkSentient() {
   // Don't follow the link
-  event.preventDefault();
   var btn = event.target || event.srcElement;
   var inputs = document.getElementsByClassName("sentient-check");
   for (var i = 0; i < inputs.length; i++) {
@@ -13,7 +12,7 @@ function checkSentient() {
           encodeURI(text)
       );
       const json = await response.json();
-      console.log(json);
+
       if (!handleFormEvent(json, input)) {
         //Stopping all events from happening.
         event.cancel = true;
@@ -23,8 +22,13 @@ function checkSentient() {
         if (event.preventDefault) event.preventDefault();
 
         input.focus();
+        console.log(
+          "Sentiment Score too low - Killing all submit and onclick events"
+        );
 
         return false;
+      } else {
+        console.log("Sentiment Score is okay. Continuing events");
       }
     };
 
