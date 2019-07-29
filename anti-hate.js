@@ -1,4 +1,4 @@
-function checkSentient() {
+function checkSentient(event) {
   // Don't follow the link
   var btn = event.target || event.srcElement;
   var inputs = document.getElementsByClassName("sentient-check");
@@ -23,12 +23,18 @@ function checkSentient() {
 
         input.focus();
         console.log(
-          "Sentiment Score too low - Killing all submit and onclick events"
+          "Sentiment Score too low on input " +
+            input.id +
+            " - Killing all submit and onclick events"
         );
 
         return false;
       } else {
-        console.log("Sentiment Score is okay. Continuing events");
+        console.log(
+          "Sentiment Score is okay on input " +
+            input.id +
+            ".. Continuing events"
+        );
       }
     };
 
