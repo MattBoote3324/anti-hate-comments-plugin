@@ -6,6 +6,8 @@ import logging
 from flask import Flask, send_from_directory, make_response
 from flask import request
 from flask import Response
+from flask_cors import CORS
+
 import json
 from google.cloud import language
 from google.cloud.language import enums
@@ -16,13 +18,14 @@ from google.oauth2 import service_account
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/mattboote3324/anti-hate/sentiment-analyis-be936a883ba2.json"
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/sentiment', methods=['POST'])
 def hello():
     """Return a friendly HTTP greeting."""
     resp = make_response(sentiment_checker(request))
-    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
 

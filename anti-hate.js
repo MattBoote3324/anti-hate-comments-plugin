@@ -7,22 +7,22 @@ function checkSentient(buttonClicked) {
 
   var request = new XMLHttpRequest();
 
-  // Open a new connection, using the GET request on the URL endpoint
-  request.open(
-    "POST",
-    "https://mattboote3324.pythonanywhere.com/sentiment",
-    true
-  );
-  request.onload = function() {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
+  $.ajax({
+    url: "https://mattboote3324.pythonanywhere.com/sentiment",
+    type: "post",
+    dataType: "json",
+    contentType: "application/json",
+    success: function(data) {
+      var data = JSON.parse(this.response);
 
-    if (request.status >= 200 && request.status < 400) {
-      console.log(data.score, data.magnitude);
-    } else {
-      console.log("error");
+      if (request.status >= 200 && request.status < 400) {
+        console.log(data.score, data.magnitude);
+      } else {
+        console.log("error");
+      }
+    },
+    data: {
+      text: text
     }
-  };
-
-  request.send({ text: text });
+  });
 }
