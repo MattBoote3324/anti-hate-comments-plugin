@@ -1,6 +1,7 @@
-function checkSentient(event) {
+function checkSentient() {
   // Don't follow the link
   var btn = event.target || event.srcElement;
+  let e = event;
   var inputs = document.getElementsByClassName("sentient-check");
   for (var i = 0; i < inputs.length; i++) {
     var input = inputs.item(i);
