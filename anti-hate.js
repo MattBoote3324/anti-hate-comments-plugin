@@ -3,7 +3,7 @@ function checkSentient() {
   event.preventDefault();
   var btn = event.target || event.srcElement;
   var inputs = document.getElementsByClassName("sentient-check");
-  for (var i = 0; i < input.length; i++) {
+  for (var i = 0; i < inputs.length; i++) {
     var input = slides.item(i);
     var text = input.value;
     // Open a new connection, using the GET request on the URL endpoint
