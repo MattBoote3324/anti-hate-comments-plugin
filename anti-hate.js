@@ -1,4 +1,4 @@
-function checkSentient(event) {
+function checkSentient() {
   // Don't follow the link
   event.preventDefault();
   var btn = event.target || event.srcElement;
@@ -16,11 +16,11 @@ function checkSentient(event) {
       console.log(json);
       if (!handleFormEvent(json, input)) {
         //Stopping all events from happening.
-        evt.cancel = true;
-        evt.returnValue = false;
-        evt.cancelBubble = true;
-        if (evt.stopPropagation) evt.stopPropagation();
-        if (evt.preventDefault) evt.preventDefault();
+        event.cancel = true;
+        event.returnValue = false;
+        event.cancelBubble = true;
+        if (event.stopPropagation) event.stopPropagation();
+        if (event.preventDefault) event.preventDefault();
 
         input.focus();
 
