@@ -44,14 +44,13 @@ and also a form.-->
         <img alt="Anti-Hate" src="bully.png" />
         <h3>anti-hate</h3>
 
-        <form onsubmit="return false">
+        <form onsubmit="return checkSentient()">
             <div class="form-group">
                 <input id="example1" class="form-control sentient-check"
                     placeholder="Please enter a kind or mean comment"></input>
-                <input id="postExample1" data-input="example1" onclick="checkSentient()" class="btn" type="submit">Post
-                Comment</button>
-
+                <input id="postExample1" data-input="example1" onclick="" class="btn" type="submit" />
             </div>
+            <p id="info-text"></p>
         </form>
 
     </div>
